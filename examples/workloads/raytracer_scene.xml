@@ -1,0 +1,137 @@
+<scene>
+    <spheres>
+        <sphere id="main_base">
+            <position x="0.0" y="-10004.0" z="-20" />
+            <size radius="10000.0" />
+            <surface_color red="0.20" green="0.20" blue="0.20" />
+            <reflectivity value="0" />
+            <transparency value="0.0" />
+        </sphere>
+        <sphere id="main_light">
+            <position x="-5.0" y="20.0" z="-30" />
+            <size radius="3.0" />
+            <surface_color red="0.00" green="0.00" blue="0.00" />
+            <reflectivity value="0" />
+            <transparency value="0.0" />
+            <emission_color red="2" green="2" blue="2" />
+        </sphere>
+
+        <sphere id="yellow">
+            <position x="2.0" y="2.0" z="-12" />
+            <size radius="1.0" />
+            <surface_color red="0.90" green="0.76" blue="0.46" />
+            <reflectivity value="1" />
+            <transparency value="0.5" />
+        </sphere>
+        <sphere id="red">
+            <position x="0.0" y="0.0" z="-20" />
+            <size radius="2.0" />
+            <surface_color red="1.00" green="0.32" blue="0.36" />
+            <reflectivity value="1" />
+            <transparency value="0.7" />
+        </sphere>
+        <sphere id="dark_gray">
+            <position x="-2.0" y="-2.6" z="-15" />
+            <size radius="1.5" />
+            <surface_color red="0.90" green="0.90" blue="0.90" />
+            <reflectivity value="1" />
+            <transparency value="0.5" />
+        </sphere>
+        <sphere id="blue">
+            <position x="3.5" y="1.0" z="-23" />
+            <size radius="1.5" />
+            <surface_color red="0.65" green="0.77" blue="0.97" />
+            <reflectivity value="1" />
+            <transparency value="0.0" />
+        </sphere>
+        <sphere id="glass">
+            <position x="3.5" y="-1.0" z="-18" />
+            <size radius="1.5" />
+            <surface_color red="1.00" green="1.00" blue="1.00" />
+            <reflectivity value="1" />
+            <transparency value="1.0" />
+        </sphere>
+        <sphere id="green">
+            <position x="-10.0" y="10.0" z="-50" />
+            <size radius="1.5" />
+            <surface_color red="0.25" green="1.00" blue="0.30" />
+            <reflectivity value="1" />
+            <transparency value="0.0" />
+        </sphere>
+
+        <sphere id="floor_blue">
+            <position x="-7" y="-3.5" z="-20" />
+            <size radius="0.5" />
+            <surface_color red="0.00" green="0.50" blue="1.00" />
+            <reflectivity value="1" />
+            <transparency value="0.7" />
+        </sphere>
+        <sphere id="floor_green">
+            <position x="-7" y="-3.3" z="-23" />
+            <size radius="0.7" />
+            <surface_color red="0.00" green="1.00" blue="0.50" />
+            <reflectivity value="1" />
+            <transparency value="0.5" />
+        </sphere>
+        <sphere id="floor_purple">
+            <position x="-4" y="-3.0" z="-30" />
+            <size radius="1" />
+            <surface_color red="1.26" green="0.30" blue="1.56" />
+            <reflectivity value="1" />
+            <transparency value="0.5" />
+        </sphere>
+        <sphere id="floor_orange">
+            <position x="-10" y="-3.2" z="-25" />
+            <size radius="0.8" />
+            <surface_color red="1.00" green="0.50" blue="0.00" />
+            <reflectivity value="1" />
+            <transparency value="0.8" />
+        </sphere>
+        <sphere id="floor_light_lime">
+            <position x="-8" y="-3.0" z="-25" />
+            <size radius="1" />
+            <surface_color red="0.18" green="0.83" blue="0.71" />
+            <reflectivity value="1" />
+            <transparency value="0.8" />
+        </sphere>
+        <sphere id="floor_small_pink">
+            <position x="5.3" y="-3.7" z="-16" />
+            <size radius="0.3" />
+            <surface_color red="2.55" green="1.29" blue="1.92" />
+            <reflectivity value="1" />
+            <transparency value="0.2" />
+        </sphere>
+        <sphere id="floor_periwinkle">
+            <position x="0.3" y="-3.0" z="-100" />
+            <size radius="1" />
+            <surface_color red="0.55" green="0.51" blue="1.00" />
+            <reflectivity value="1" />
+            <transparency value="0.3" />
+        </sphere>
+        
+        <sphere id="small_sun">
+            <position x="6.0" y="-2.8" z="-15" />
+            <size radius="0.5" />
+            <surface_color red="1.00" green="1.00" blue="1.00" />
+            <reflectivity value="0" />
+            <transparency value="0.0" />
+            <emission_color red="1.80" green="1.46" blue="0.76" />
+        </sphere>
+    </spheres>
+    <animation>
+        <sphere id="red"><position before="320" x="-0.05" y="0.025" z="-0.05" /></sphere>
+        <sphere id="blue"><position before="600" z="0.03" /></sphere>
+        <sphere id="glass"><position before="60" y="-0.025" /></sphere>
+        <sphere id="dark_gray"><position before="250" x="-0.03" z="-0.03" /></sphere>
+        <sphere id="yellow"><position after="200" x="-0.02" z="-0.02" /></sphere>
+        <sphere id="green"><position before="125" x="0.04" y="-0.1" z="0.1" /></sphere>
+        <sphere id="floor_purple"><position after="125" y="0.02" /></sphere>
+        <sphere id="floor_blue"><position before="625" x="0.025" /></sphere>
+        <sphere id="floor_green"><position before="600" x="0.03" /></sphere>
+        <sphere id="floor_orange"><position before="700" x="0.02" /></sphere>
+        <sphere id="floor_light_lime"><position before="700" x="0.02" /></sphere>
+        <sphere id="floor_small_pink"><position before="425" x="-0.03" /></sphere>
+        <sphere id="small_sun"><position before="600" z="-0.2" /></sphere>
+        <sphere id="floor_periwinkle"><position before="600" z="0.1" /></sphere>
+    </animation>
+</scene>
