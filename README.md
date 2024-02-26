@@ -59,3 +59,7 @@ After building the library it is necessary to make it available at runtime.
 To do this, execute `export LD_LIBRARY_PATH=<path>/bin:$LD_LIBRARY_PATH`, replacing `<path>` with the path to the repository's root folder.
 
 After this, just execute any example under `bin/ex_`
+
+## Documentation
+
+Detailed documentation of the library is available at the [Wiki](https://github.com/GMAP/GSParLib/wiki).
