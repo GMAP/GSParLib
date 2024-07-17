@@ -117,6 +117,8 @@ namespace GSPar {
                 int deviceId;
 
             public:
+                using BaseDevice<ExecutionFlow, Kernel, MemoryObject, ChunkedMemoryObject, CUcontext, CUdevice*, CUstream>::malloc;
+                
                 Device();
                 explicit Device(int ordinal);
                 virtual ~Device();

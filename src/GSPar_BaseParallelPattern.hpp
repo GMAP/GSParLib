@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <array>
 #include <map>
 #include <mutex>
 #include <iostream> //std::cout and std::cerr
@@ -742,6 +743,37 @@ namespace GSPar {
             BaseParallelPattern& setParameter(std::string name, Driver::BaseMemoryObjectBase* userMemoryObject, ParameterDirection direction = GSPAR_PARAM_IN) {
                 VarType varType = getTemplatedType<T>();
                 this->setPointerParameter(name, varType, userMemoryObject, direction);
+                return *this;
+            }
+            /**
+             * C++ data containers
+             */
+            template <typename T>
+            BaseParallelPattern& setParameter(std::string name, std::vector<T> &value, ParameterDirection direction = GSPAR_PARAM_IN) {
+                VarType varType = getTemplatedType<T*>();
+                this->setPointerParameter(name, varType, sizeof(T)*value.size(), value.data(), direction);
+                return *this;
+            }
+            template <typename T>
+            BaseParallelPattern& setParameter(std::string name, const std::vector<T> &value) {
+                // Can't call setParameter(non-const T) because getTemplatedType would lost const information
+                VarType varType = getTemplatedType<const T*>();
+                // A const parameter must be IN, as it can't be modified
+                this->setPointerParameter(name, varType, sizeof(T)*value.size(), const_cast<T*>(value.data()), GSPAR_PARAM_IN);
+                return *this;
+            }
+            template <typename T, std::size_t N>
+            BaseParallelPattern& setParameter(std::string name, std::array<T, N> &value, ParameterDirection direction = GSPAR_PARAM_IN) {
+                VarType varType = getTemplatedType<T*>();
+                this->setPointerParameter(name, varType, sizeof(T)*value.size(), value.data(), direction);
+                return *this;
+            }
+            template <typename T, std::size_t N>
+            BaseParallelPattern& setParameter(std::string name, const std::array<T, N> &value) {
+                // Can't call setParameter(non-const T) because getTemplatedType would lost const information
+                VarType varType = getTemplatedType<const T*>();
+                // A const parameter must be IN, as it can't be modified
+                this->setPointerParameter(name, varType, sizeof(T)*value.size(), const_cast<T*>(value.data()), GSPAR_PARAM_IN);
                 return *this;
             }
 

@@ -117,6 +117,8 @@ namespace GSPar {
                 std::map<cl_device_info, void*> attributeCache;
 
             public:
+                using BaseDevice<ExecutionFlow, Kernel, MemoryObject, ChunkedMemoryObject, cl_context, cl_device_id, cl_command_queue>::malloc;
+
                 Device();
                 explicit Device(cl_device_id deviceId);
                 virtual ~Device();

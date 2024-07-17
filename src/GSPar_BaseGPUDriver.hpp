@@ -5,11 +5,12 @@
 #define SUPPORTED_DIMS 3
 
 #include <string>
-#include <list>
 #include <iosfwd>
 #include <ostream>
 #include <mutex>
 #include <math.h>
+#include <vector>
+#include <array>
 #ifdef GSPAR_DEBUG
 #include <iostream> //std::cout and std::cerr
 #endif
@@ -493,6 +494,25 @@ namespace GSPar {
             virtual TMemoryObject* malloc(long size, const void* hostPtr = nullptr) = 0;
             virtual TChunkedMemoryObject* mallocChunked(unsigned int chunks, long chunkSize, void** hostPointers = nullptr, bool readOnly = false, bool writeOnly = false) = 0;
             virtual TChunkedMemoryObject* mallocChunked(unsigned int chunks, long chunkSize, const void** hostPointers = nullptr) = 0;
+            /**
+             * C++ data containers
+             */
+            template <typename T>
+            TMemoryObject* malloc(std::vector<T> &hostVector, bool readOnly = false, bool writeOnly = false) {
+                return this->malloc(sizeof(T)*hostVector.size(), hostVector.data(), readOnly, writeOnly);
+            }
+            template <typename T>
+            TMemoryObject* malloc(const std::vector<T> &hostVector) {
+                return this->malloc(sizeof(T)*hostVector.size(), hostVector.data());
+            }
+            template <typename T, std::size_t N>
+            TMemoryObject* malloc(std::array<T, N> &hostArray, bool readOnly = false, bool writeOnly = false) {
+                return this->malloc(sizeof(T)*hostArray.size(), hostArray.data(), readOnly, writeOnly);
+            }
+            template <typename T, std::size_t N>
+            TMemoryObject* malloc(const std::array<T, N> &hostArray) {
+                return this->malloc(sizeof(T)*hostArray.size(), hostArray.data());
+            }
             // Can't convert this BaseGPUDriver instance to child Driver instance
             // virtual TMemoryObject* malloc(long size, void* hostPtr = NULL) {
             //     return new TMemoryObject(this, size, hostPtr, false, false);

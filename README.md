@@ -56,7 +56,7 @@ To compile with debugging enabled, use `DEBUG=1 make` (both when compiling the l
 ## Run examples
 
 After building the library it is necessary to make it available at runtime.
-To do this, execute `export LD_LIBRARY_PATH=<path>/bin:$LD_LIBRARY_PATH`, replacing `<path>` with the path to the repository's root folder.
+To do this, execute `export LD_LIBRARY_PATH=<path>/bin:$LD_LIBRARY_PATH`, replacing `<path>` with the path to the repository's root folder. If you are on the right folder, just execute `export LD_LIBRARY_PATH=$(pwd)/bin:$LD_LIBRARY_PATH`.
 
 After this, just execute any example under `bin/ex_`
 
