@@ -44,13 +44,21 @@ PATHSLIB := -I/usr/local/cuda/include -Isrc
 PATHSTEST := $(PATHSLIB) -I$(THIRDPTDIR) -I$(EXAMPLESDIR)/include
 TESTLIB := -L$(TARGETDIR) -l$(LIBNAME)
 
+# Valid values for CL_TARGET_OPENCL_VERSION: 100, 110, 120, 200, 210, 220, 300
+ifdef CL_TARGET_OPENCL_VERSION
+	DEFSGPU +=-DCL_TARGET_OPENCL_VERSION=${CL_TARGET_OPENCL_VERSION}
+else
+	DEFSGPU +=-DCL_TARGET_OPENCL_VERSION=300
+endif
+
 PATHOPENCV := -I/usr/local/include/opencv4
 LIBSOPENCV := -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 EXTRADEPS := 
 INCMANDEL := 
 LIBMANDEL := 
 ifdef DEBUG
-	DEFS +=-DDEBUG -DGSPAR_DEBUG
+	DEFS +=-DDEBUG
+	DEFSGPU +=-DGSPAR_DEBUG
 	EXTRADEPS := $(LIBMARX2PATH)
 	INCMANDEL := -I$(MARX2DIR) -L$(MARX2DIR)
 	LIBMANDEL := -lmarX2 -lX11 -lm
@@ -87,11 +95,11 @@ EXAMPLETARGETS_SEQUENTIAL := $(patsubst $(EXAMPLESEQUENTIALDIR)/%,$(TARGETDIR)/$
 
 $(TARGET): $(OBJECTS) | $(TARGETDIR)
 	@echo "${CLR_DARKCYAN}Linking dynamic library ${CLR_ORANGE}$(TARGET)${CLR_NO}..."
-	$(COMPILER) $(DEFS) -shared -fPIC -o $(TARGET) $^ $(LIB) $(LIBOCL) $(LIBCUDADRIVER) $(LIBCUDANVRTC)
+	$(COMPILER) $(DEFS) $(DEFSGPU) -shared -fPIC -o $(TARGET) $^ $(LIB) $(LIBOCL) $(LIBCUDADRIVER) $(LIBCUDANVRTC)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) | $(BUILDDIR)
 	@echo "${CLR_DARKCYAN}Compiling and assembling object ${CLR_ORANGE}$@${CLR_NO}..."
-	$(COMPILER) $(DEFS) $(CFLAGS) $(PATHSLIB) -c -fPIC -o $@ $<
+	$(COMPILER) $(DEFS) $(DEFSGPU) $(CFLAGS) $(PATHSLIB) -c -fPIC -o $@ $<
 
 $(TARGETDIR):
 	@mkdir -p $@
@@ -109,11 +117,11 @@ $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(DRIVERAPINAME)_%: $(TARGETDIR)/$(EXAMPLES
 # Lib to CUDA
 $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(DRIVERAPINAME)_%_$(CUDANAME): $(EXAMPLEDRIVERAPIDIR)/%.$(SRCEXT) $(TARGET) $(EXTRADEPS) | $(TARGETDIR)
 	@echo "${CLR_DARKCYAN}Building GSPar Driver API example ${CLR_ORANGE}$@${CLR_DARKCYAN} from $<${CLR_NO}"
-	$(COMPILER) $(DEFS) -DGSPARDRIVER_CUDA $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
+	$(COMPILER) $(DEFS) $(DEFSGPU) -DGSPARDRIVER_CUDA $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
 # Lib to OpenCL
 $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(DRIVERAPINAME)_%_$(OCLNAME): $(EXAMPLEDRIVERAPIDIR)/%.$(SRCEXT) $(TARGET) $(EXTRADEPS) | $(TARGETDIR)
 	@echo "${CLR_DARKCYAN}Building GSPar Driver API example ${CLR_ORANGE}$@${CLR_DARKCYAN} from $<${CLR_NO}"
-	$(COMPILER) $(DEFS) -DGSPARDRIVER_OPENCL $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
+	$(COMPILER) $(DEFS) $(DEFSGPU) -DGSPARDRIVER_OPENCL $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
 
 # Pattern API examples
 examples_pattern_api: $(EXAMPLETARGETS_PATTERNAPI_CUDA) $(EXAMPLETARGETS_PATTERNAPI_OPENCL)
@@ -121,11 +129,11 @@ $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(PATTERNAPINAME)_%: $(TARGETDIR)/$(EXAMPLE
 # Lib to CUDA
 $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(PATTERNAPINAME)_%_$(CUDANAME): $(EXAMPLEPATTERNAPIDIR)/%.$(SRCEXT) $(TARGET) $(EXTRADEPS) | $(TARGETDIR)
 	@echo "${CLR_DARKCYAN}Building GSPar Pattern API example ${CLR_ORANGE}$@${CLR_DARKCYAN} from $<${CLR_NO}"
-	$(COMPILER) $(DEFS) -DGSPARDRIVER_CUDA $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
+	$(COMPILER) $(DEFS) $(DEFSGPU) -DGSPARDRIVER_CUDA $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
 # Lib to OpenCL
 $(TARGETDIR)/$(EXAMPLESTARGETPREFIX)_$(PATTERNAPINAME)_%_$(OCLNAME): $(EXAMPLEPATTERNAPIDIR)/%.$(SRCEXT) $(TARGET) $(EXTRADEPS) | $(TARGETDIR)
 	@echo "${CLR_DARKCYAN}Building GSPar Pattern API example ${CLR_ORANGE}$@${CLR_DARKCYAN} from $<${CLR_NO}"
-	$(COMPILER) $(DEFS) -DGSPARDRIVER_OPENCL $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
+	$(COMPILER) $(DEFS) $(DEFSGPU) -DGSPARDRIVER_OPENCL $(CFLAGS) $< $(call get_paths, $<) $(TESTLIB) -o $@ $(LIBPTHREAD) $(call get_libs, $<)
 
 # Sequential examples
 examples_sequential: $(EXAMPLETARGETS_SEQUENTIAL)
