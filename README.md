@@ -1,4 +1,4 @@
-# GSParLib
+# GSParLib: A Multi-Level Programming Interface Unifying OpenCL and CUDA for Expressing Stream and Data Parallelism
 
 GSParLib is a C++ object-oriented multi-level API unifying OpenCL and CUDA for GPU programming that allows code portability between different GPU platforms and targets stream and data parallelism.
 
