@@ -8,7 +8,22 @@ Contributors and role:
 - Dalvan Griebler [[ORCID](https://orcid.org/0000-0002-4690-3964)]: coordination, funds acquisition, and project management.
 
 ## How to cite
-The scientific article presenting GSParLib is currently under review.
+Rockenbach, D. A., Araujo, G., Griebler, D., & Fernandes, L. G. (2025). **GSParLib: A multi-level programming interface unifying OpenCL and CUDA for expressing stream and data parallelism**. *Computer Standards & Interfaces*, 92, 103922. https://doi.org/10.1016/j.csi.2024.103922
+
+```bibtex
+@article{ROCKENBACH:CSI:25,
+	title={{GSParLib}: A multi-level programming interface unifying {OpenCL} and {CUDA} for expressing stream and data parallelism},
+	author={Dinei A. Rockenbach and Gabriell Araujo and Dalvan Griebler and Luiz Gustavo Fernandes},
+	journal={Computer Standards \& Interfaces},
+	volume={92},
+	pages={103922},
+	publisher={Elsevier},
+	month=mar,
+	year={2025},
+	doi={10.1016/j.csi.2024.103922},
+	abstract={The evolution of Graphics Processing Units (GPUs) has allowed the industry to overcome long-lasting problems and challenges. Many belong to the stream processing domain, whose central aspect is continuously receiving and processing data from streaming data producers such as cameras and sensors. Nonetheless, programming GPUs is challenging because it requires deep knowledge of many-core programming, mechanisms and optimizations for GPUs. Current GPU programming standards do not target stream processing and present programmability and code portability limitations. Among our main scientific contributions resides GSParLib, a C++ multi-level programming interface unifying CUDA and OpenCL for GPU processing on stream and data parallelism with negligible performance losses compared to manual implementations; GSParLib is organized in two layers: one for general-purpose computing and another for high-level structured programming based on parallel patterns; a methodology to provide unified and driver agnostic interfaces minimizing performance losses; a set of parallelism strategies and optimizations for GPU processing targeting stream and data parallelism; and new experiments covering GPU performance on applications exposing stream and data parallelism.},
+}
+```
 
 ## Usage
 

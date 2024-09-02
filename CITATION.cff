@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+authors:
+  - family-names: Rockenbach
+    given-names: "Dinei A."
+    affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+    orcid: "https://orcid.org/0000-0002-2091-9626"
+    alias: dineiar
+  - family-names: Araujo
+    given-names: Gabriell
+    affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+    orcid: "https://orcid.org/0000-0001-8179-2318"
+  - family-names: Griebler
+    given-names: Dalvan
+    affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+    orcid: "https://orcid.org/0000-0002-4690-3964"
+abstract: "This repository has the source code for the GSParLib library, a multi-level programming interface unifying OpenCL and CUDA for expressing stream and data parallelism."
+title: "GSParLib: A multi-level programming interface unifying OpenCL and CUDA for expressing stream and data parallelism"
+message: "Please cite this software using the metadata from 'preferred-citation'."
+preferred-citation:
+  authors:
+    - family-names: Rockenbach
+      given-names: "Dinei A."
+      affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+      orcid: "https://orcid.org/0000-0002-2091-9626"
+      alias: dineiar
+    - family-names: Araujo
+      given-names: Gabriell
+      affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+      orcid: "https://orcid.org/0000-0001-8179-2318"
+    - family-names: Griebler
+      given-names: Dalvan
+      affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+      orcid: "https://orcid.org/0000-0002-4690-3964"
+    - family-names: Fernandes
+      given-names: Luiz
+      name-particle: Gustavo
+      affiliation: "School of Technology, Pontifical Catholic University of Rio Grande do Sul (PUCRS), Porto Alegre, Brazil"
+  type: article
+  doi: 10.1016/j.csi.2024.103922
+  title: "GSParLib: A multi-level programming interface unifying OpenCL and CUDA for expressing stream and data parallelism"
+  journal: "Computer Standards & Interfaces"
+  year: 2025
+  volume: 92
+  pages: "103922"
+  abstract: "The evolution of Graphics Processing Units (GPUs) has allowed the industry to overcome long-lasting problems and challenges. Many belong to the stream processing domain, whose central aspect is continuously receiving and processing data from streaming data producers such as cameras and sensors. Nonetheless, programming GPUs is challenging because it requires deep knowledge of many-core programming, mechanisms and optimizations for GPUs. Current GPU programming standards do not target stream processing and present programmability and code portability limitations. Among our main scientific contributions resides GSParLib, a C++ multi-level programming interface unifying CUDA and OpenCL for GPU processing on stream and data parallelism with negligible performance losses compared to manual implementations; GSParLib is organized in two layers: one for general-purpose computing and another for high-level structured programming based on parallel patterns; a methodology to provide unified and driver agnostic interfaces minimizing performance losses; a set of parallelism strategies and optimizations for GPU processing targeting stream and data parallelism; and new experiments covering GPU performance on applications exposing stream and data parallelism."
+  publisher:
+    name: "Elsevier"
+  repository-code: "https://github.com/GMAP/GSParLib"
+  date-published: "2024-09-02"
+  identifiers:
+    - type: doi
+      value: "10.1016/j.csi.2024.103922"
+    - type: url
+      value: "https://www.sciencedirect.com/science/article/pii/S0920548924000916"
